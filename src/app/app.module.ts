@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { ObjectTesterComponent } from './object-tester/object-tester.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ObjectTesterComponent
   ],
   imports: [
     BrowserModule
