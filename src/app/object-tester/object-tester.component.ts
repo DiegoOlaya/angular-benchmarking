@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {ImaginaryNum } from './imaginary-num.ts';
+
 @Component({
   selector: 'app-object-tester',
   templateUrl: './object-tester.component.html',
