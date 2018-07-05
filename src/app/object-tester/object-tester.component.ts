@@ -8,8 +8,8 @@ import {ImaginaryNum } from './imaginary-num.ts';
   styleUrls: ['./object-tester.component.css']
 })
 export class ObjectTesterComponent implements OnInit {
-  a: ImaginaryNum;
-  b: ImaginaryNum;
+  public a: ImaginaryNum;
+  public b: ImaginaryNum;
   private randomRange = 51; //Random number generation will return int between 0 and 50.
 
   constructor() {
