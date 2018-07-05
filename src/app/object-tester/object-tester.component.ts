@@ -8,8 +8,25 @@ import {ImaginaryNum } from './imaginary-num.ts';
   styleUrls: ['./object-tester.component.css']
 })
 export class ObjectTesterComponent implements OnInit {
+  a: ImaginaryNum;
+  b: ImaginaryNum;
+  private randomRange = 51; //Random number generation will return int between 0 and 50.
 
-  constructor() { }
+  constructor() {
+    a = new ImaginaryNum(randomRange);
+    b = new ImaginaryNum(randomRange);
+  }
+
+  //Setter method for random value range.
+  function setRandRange(newRange: int) {
+    this.randomRange = newRange;
+  }
+
+  //Used to generate new numbers on every test cycle. Avoids cacheing.
+  function newNums() {
+    a = new ImaginaryNum(randomRange);
+    b = new ImaginaryNum(randomRange);
+  }
 
   ngOnInit() {
   }
