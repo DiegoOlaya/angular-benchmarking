@@ -28,6 +28,13 @@ export class ObjectTesterComponent implements OnInit {
     b = new ImaginaryNum(randomRange);
   }
 
+  function multImagNums(a: ImaginaryNum, b: ImaginaryNum) {
+    var c_r : number = (a.real * b.real) - (a.imaginary * b.imaginary);
+    var c_i : number = (a.imaginary * b.real) + (b.imaginary * a.real);
+    var c : ImaginaryNum = new ImaginaryNum(this.randomRange, c_r, c_i);
+    return (c);
+  }
+
   ngOnInit() {
   }
 
