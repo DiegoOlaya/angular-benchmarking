@@ -28,6 +28,9 @@ export class ObjectTesterComponent implements OnInit {
     b = new ImaginaryNum(randomRange);
   }
 
+  //Multiplies two imaginary numbers together.
+  //Args: a,b: ImaginaryNum objects to be multiplied together.
+  //Returns: c: ImaginaryNum object containing result.
   function multImagNums(a: ImaginaryNum, b: ImaginaryNum) {
     var c_r : number = (a.real * b.real) - (a.imaginary * b.imaginary);
     var c_i : number = (a.imaginary * b.real) + (b.imaginary * a.real);
