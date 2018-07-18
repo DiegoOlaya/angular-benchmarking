@@ -11,6 +11,7 @@ export class ObjectTesterComponent implements OnInit {
   public a: ImaginaryNum;
   public b: ImaginaryNum;
   private randomRange = 51; //Random number generation will return int between 0 and 50.
+  public timeResult = 0;
 
   constructor() {
     a = new ImaginaryNum(randomRange);
@@ -36,6 +37,20 @@ export class ObjectTesterComponent implements OnInit {
     var c_i : number = (a.imaginary * b.real) + (b.imaginary * a.real);
     var c : ImaginaryNum = new ImaginaryNum(this.randomRange, c_r, c_i);
     return (c);
+  }
+
+  function startTiming(numCycles: number, randRange?:number) {
+    if (randRange != undefined) { //Changes random number range if user specifies a value.
+      setRandRange(randRange);
+    }
+    var processTimer = window.performance;
+    var start = processTimer.now();
+    for(i=0; i < numCycles; i++) {
+      newNums();
+      multImagNums(a,b);
+    }
+    var end = processTimer.now();
+    timeResult = end - start;
   }
 
   ngOnInit() {
