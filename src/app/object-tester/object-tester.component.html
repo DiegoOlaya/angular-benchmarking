@@ -1,3 +1,6 @@
-<p>
-  object-tester works!
-</p>
+<h1>Object Based Implementation</h1>
+<input [(ngModel)] = "randomRange" name="randomRange" type="number"><br>
+<input [(ngModel)] = "cycles" name = "cycles" type="number"><br>
+<button (click) = "startTiming(cycles, randomRange)"></button>
+<br>
+<h3>Timing Result: {{timeResult}}</h3>
