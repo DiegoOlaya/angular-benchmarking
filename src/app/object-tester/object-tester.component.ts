@@ -13,10 +13,7 @@ export class ObjectTesterComponent implements OnInit {
   private randomRange = 51; //Random number generation will return int between 0 and 50.
   public timeResult = 0;
 
-  constructor() {
-    a = new ImaginaryNum(randomRange);
-    b = new ImaginaryNum(randomRange);
-  }
+  constructor() { }
 
   //Setter method for random value range.
   function setRandRange(newRange: int) {
