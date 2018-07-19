@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ObjectTesterComponent } from './object-tester/object-tester.component';
+import { ArrayTesterComponent } from './array-tester/array-tester.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ObjectTesterComponent
+    ObjectTesterComponent,
+    ArrayTesterComponent
   ],
   imports: [
     BrowserModule
