@@ -45,12 +45,12 @@ export class ObjectTesterComponent implements OnInit {
     }
     var processTimer = window.performance;
     var start = processTimer.now();
-    for(i=0; i < numCycles; i++) {
+    for(i=0; i < numCycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
       newNums();
       multImagNums(a,b);
     }
     var end = processTimer.now();
-    timeResult = end - start;
+    timeResult = end - start; //Assigns result to variable which is then passed to client view.
   }
 
   ngOnInit() {
