@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ObjectTesterComponent } from './object-tester/object-tester.component';
@@ -14,7 +15,8 @@ import { NumberTesterComponent } from './number-tester/number-tester.component';
     NumberTesterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
