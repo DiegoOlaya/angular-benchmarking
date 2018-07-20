@@ -36,13 +36,13 @@ export class ObjectTesterComponent implements OnInit {
     return (c);
   }
 
-  public startTiming(numCycles: number, randRange?:number) {
-    if (randRange != undefined) { //Changes random number range if user specifies a value.
-      this.setRandRange(randRange);
+  public startTiming(cycles: number, range?:number) {
+    if (range != undefined) { //Changes random number range if user specifies a value.
+      this.setRandRange(range);
     }
     var processTimer = window.performance;
     var start = processTimer.now();
-    for(var i=0; i < numCycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
+    for(var i=0; i < cycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
       this.newNums();
       this.multImagNums(this.a, this.b);
     }
