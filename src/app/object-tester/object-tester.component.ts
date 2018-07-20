@@ -42,7 +42,7 @@ export class ObjectTesterComponent implements OnInit {
     }
     var processTimer = window.performance;
     var start = processTimer.now();
-    for(i=0; i < numCycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
+    for(var i=0; i < numCycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
       newNums();
       multImagNums(a,b);
     }
