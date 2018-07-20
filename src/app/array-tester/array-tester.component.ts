@@ -10,6 +10,7 @@ export class ArrayTesterComponent implements OnInit {
   //Variables storing the two complex numbers to be multiplied.
   var a:number[];
   var b:number[];
+  public timingResult:number;
 
   constructor() {}
 
@@ -34,7 +35,6 @@ export class ArrayTesterComponent implements OnInit {
     Times how long it takes for given number of cycles of multiplication to occur.
     @arg cycles Type: number. The number of times the computer will generate and multiply a pair of complex numbers.
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
-    @returns Type: number. The amount of time the computer took to complete all the cycles.
   */
   function startTiming(cycles:number, range:number) {
     var processTimer = window.performance;
@@ -45,7 +45,7 @@ export class ArrayTesterComponent implements OnInit {
       c = multiplyImagNums(a, b);
     }
     var end = processTimer.now();
-    return (end-start);
+    timingResult = (end-start); //Assigns result to state field that is then passed to client view.
   }
 
   ngOnInit() {}
