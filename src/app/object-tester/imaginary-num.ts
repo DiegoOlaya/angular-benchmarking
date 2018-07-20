@@ -1,6 +1,6 @@
 export class ImaginaryNum {
-  public real: number,
-  public imaginary: number
+  public real: number;
+  public imaginary: number;
 
   //Constructor for imaginary number class.
   constructor(randRange, r?:number, i?:number) {

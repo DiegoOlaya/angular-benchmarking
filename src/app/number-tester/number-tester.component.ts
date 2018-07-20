@@ -13,14 +13,15 @@ export class NumberTesterComponent implements OnInit {
   private b_r:number;
 
   public timingResult;
+  public usrRange:number;
 
   constructor() { }
 
-  function generateNums(range:number) {
-    a_r = Math.random()*range;
-    a_i = Math.random()*range;
-    b_i = Math.random()*range;
-    b_r = Math.random()*range;
+  private generateNums(range:number) {
+    this.a_r = Math.random()*range;
+    this.a_i = Math.random()*range;
+    this.b_i = Math.random()*range;
+    this.b_r = Math.random()*range;
   }
 
   /**
@@ -31,9 +32,9 @@ export class NumberTesterComponent implements OnInit {
     @arg b_i Type: number. Represents imaginary part of second imaginary number.
     @returns Array of two numbers representing real and imaginary parts of result.
   */
-  function multiplyNums(a_r:number, a_i:number, b_r:number, b_i:number) {
-    c_r = (a_r * b_r) - (a_i * b_i);
-    c_i = (a_i * b_r) + (a_r * b_i);
+  private multiplyNums(a_r:number, a_i:number, b_r:number, b_i:number) {
+    var c_r = (a_r * b_r) - (a_i * b_i);
+    var c_i = (a_i * b_r) + (a_r * b_i);
     return [c_r, c_i];
   }
 
@@ -42,15 +43,15 @@ export class NumberTesterComponent implements OnInit {
     @arg cycles Type: number. The number of times the computer will generate and multiply a pair of complex numbers.
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
   */
-  function startTiming(cycles:number, range:number) {
+  public startTiming(cycles:number, range:number) {
     var processTimer = window.performance;
     var start = performance.now();
     for (var i = 0; i < cycles; i++) {
-      generateNums();
-      multiplyNums(a_r, a_i, b_r, b_i);
+      this.generateNums(this.usrRange);
+      this.multiplyNums(this.a_r, this.a_i, this.b_r, this.b_i);
     }
     var end = performance.now();
-    timingResult = (end - start);
+    this.timingResult = (end - start);
   }
 
   ngOnInit() {

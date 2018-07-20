@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ImaginaryNum } from './imaginary-num.ts';
+import {ImaginaryNum } from './imaginary-num';
 
 @Component({
   selector: 'app-object-tester',
@@ -16,38 +16,38 @@ export class ObjectTesterComponent implements OnInit {
   constructor() { }
 
   //Setter method for random value range.
-  function setRandRange(newRange: int) {
+  public setRandRange(newRange:number) {
     this.randomRange = newRange;
   }
 
   //Used to generate new numbers on every test cycle. Avoids cacheing.
-  function newNums() {
-    a = new ImaginaryNum(randomRange);
-    b = new ImaginaryNum(randomRange);
+  private newNums() {
+    this.a = new ImaginaryNum(this.randomRange);
+    this.b = new ImaginaryNum(this.randomRange);
   }
 
   //Multiplies two imaginary numbers together.
   //Args: a,b: ImaginaryNum objects to be multiplied together.
   //Returns: c: ImaginaryNum object containing result.
-  function multImagNums(a: ImaginaryNum, b: ImaginaryNum) {
+  private multImagNums(a: ImaginaryNum, b: ImaginaryNum) {
     var c_r : number = (a.real * b.real) - (a.imaginary * b.imaginary);
     var c_i : number = (a.imaginary * b.real) + (b.imaginary * a.real);
     var c : ImaginaryNum = new ImaginaryNum(this.randomRange, c_r, c_i);
     return (c);
   }
 
-  function startTiming(numCycles: number, randRange?:number) {
+  public startTiming(numCycles: number, randRange?:number) {
     if (randRange != undefined) { //Changes random number range if user specifies a value.
-      setRandRange(randRange);
+      this.setRandRange(randRange);
     }
     var processTimer = window.performance;
     var start = processTimer.now();
     for(var i=0; i < numCycles; i++) { //Generates and multiplies two imaginary numbers a set number of times.
-      newNums();
-      multImagNums(a,b);
+      this.newNums();
+      this.multImagNums(this.a, this.b);
     }
     var end = processTimer.now();
-    timeResult = end - start; //Assigns result to variable which is then passed to client view.
+    this.timeResult = end - start; //Assigns result to variable which is then passed to client view.
   }
 
   ngOnInit() {

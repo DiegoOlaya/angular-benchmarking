@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ArrayTesterComponent implements OnInit {
 
   //Variables storing the two complex numbers to be multiplied.
-  var a:number[];
-  var b:number[];
+  private a:number[];
+  private b:number[];
   public timingResult:number;
 
   constructor() {}
 
   //Randomly generates and returns a complex number represented by an array of two numbers.
-  function generateComplexNum(range:number) {
-    newNum = [Math.random()*range, Math.random()*range];
+  private generateComplexNum(range:number) {
+    var newNum = [Math.random()*range, Math.random()*range];
     return newNum;
   }
 
@@ -25,9 +25,9 @@ export class ArrayTesterComponent implements OnInit {
     @arg b Type: number[]. Complex number to multiply.
     @returns Type: number[]. Array representing the result of the multiplication a*b.
   */
-  function multiplyImagNums(a:number[], b:number[]) {
-    c_r = (a[0] * b[0]) - (a[1] * b[1]);
-    c_i = (a[1] * b[0]) + (a[0] * b[1]);
+  private multiplyImagNums(a:number[], b:number[]) {
+    var c_r = (a[0] * b[0]) - (a[1] * b[1]);
+    var c_i = (a[1] * b[0]) + (a[0] * b[1]);
     return [c_r, c_i];
   }
 
@@ -36,16 +36,16 @@ export class ArrayTesterComponent implements OnInit {
     @arg cycles Type: number. The number of times the computer will generate and multiply a pair of complex numbers.
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
   */
-  function startTiming(cycles:number, range:number) {
+  public startTiming(cycles:number, range:number) {
     var processTimer = window.performance;
     var start = processTimer.now();
     for (var i = 0; i < cycles; i++) {
-      a = generateComplexNum(range);
-      b = generateComplexNum(range);
-      c = multiplyImagNums(a, b);
+      this.a = this.generateComplexNum(range);
+      this.b = this.generateComplexNum(range);
+      var c = this.multiplyImagNums(this.a, this.b);
     }
     var end = processTimer.now();
-    timingResult = (end-start); //Assigns result to state field that is then passed to client view.
+    this.timingResult = (end-start); //Assigns result to state field that is then passed to client view.
   }
 
   ngOnInit() {}
