@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ObjectTesterComponent } from './object-tester/object-tester.component';
 import { ArrayTesterComponent } from './array-tester/array-tester.component';
 import { NumberTesterComponent } from './number-tester/number-tester.component';
+import { TimingAveragerComponent } from './timing-averager/timing-averager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ObjectTesterComponent,
     ArrayTesterComponent,
-    NumberTesterComponent
+    NumberTesterComponent,
+    TimingAveragerComponent
   ],
   imports: [
     BrowserModule,
