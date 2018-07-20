@@ -1,6 +1,6 @@
 <h1>Object Based Implementation</h1>
-<input [(ngModel)] = "randomRange" name="randomRange" type="number"><br>
-<input [(ngModel)] = "cycles" name = "cycles" type="number"><br>
-<button (click) = "startTiming(cycles, randomRange)"></button>
+Random Number Range: <input [(ngModel)] = "randomRange" name="randomRange" type="number"><br>
+Number of Cycles: <input [(ngModel)] = "cycles" name = "cycles" type="number"><br>
+<button (click) = "startTiming(cycles, randomRange)">Start Timing</button>
 <br>
 <h3>Timing Result: {{timeResult}}</h3>
