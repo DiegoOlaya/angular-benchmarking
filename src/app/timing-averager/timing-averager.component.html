@@ -1,3 +1,19 @@
-<p>
-  timing-averager works!
-</p>
+<h1>Implementation Timing</h1>
+<h3>Select an implementation to use.</h3>
+<div>
+  <input type="radio" name="method" id='choice1' value='0' (click)='setTimingComponent(0)' />
+  <label for='choice1'>Object-Based Implementation.</label>
+
+  <input type="radio" name='method' id='choice2' value='1' (click)='setTimingComponent(1)' />
+  <label for='choice2'>Array-Based Implementation</label>
+
+  <input type='radio' name='method' id='choice3' value='2' (click)='setTimingComponent(2)' />
+  <label for='choice3'>Number-Based Implementation</label>
+</div>
+
+Number of Timing Runs: <input type='number' name='runs' [(NgModel)]='numRuns' /><br />
+Number of Cycles per Run: <input type='number' name='cycles' [(NgModel)]='cycles' /><br />
+Random Number Generation Range: <input type='number' name="range" [(NgModel)]='range' /><br />
+<button (click)='startTiming(numRuns, cycles, range)'>Begin Timing</button>
+
+<h5>Average Run Time for Selected Implementation: {{averagedTime}}</h5>
