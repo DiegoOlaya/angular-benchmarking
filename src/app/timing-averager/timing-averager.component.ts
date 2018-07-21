@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { ArrayTesterComponent } from './array-tester';
-import { ObjectTesterComponent } from './object-tester';
-import { NumberTesterComponent } from '.number-tester';
+import { ArrayTesterComponent } from '../array-tester/array-tester.component';
+import { ObjectTesterComponent } from '../object-tester/object-tester.component';
+import { NumberTesterComponent } from '../number-tester/number-tester.component';
 
 @Component({
   selector: 'app-timing-averager',
@@ -11,7 +11,11 @@ import { NumberTesterComponent } from '.number-tester';
 })
 export class TimingAveragerComponent implements OnInit {
 
-  private timingComponent:Object;
+  @ViewChild(ArrayTesterComponent)
+  @ViewChild(ObjectTesterComponent)
+  @ViewChild(NumberTesterComponent)
+
+  private timingComponent;
   private componentArray = [
     new ObjectTesterComponent(), new ArrayTesterComponent(), new NumberTesterComponent()
   ];
