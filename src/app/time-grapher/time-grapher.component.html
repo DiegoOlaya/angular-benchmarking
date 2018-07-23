@@ -1,3 +1,18 @@
-<p>
-  time-grapher works!
-</p>
+<h1>Timing Graphs</h1>
+<h3>Select number of cycles to run.</h3>
+Initial Number of Cycles: <input type="number" name="start" [(ngModel)]="start" /><br />
+Final Number of Cycles: <input type="number" name="end" [(ngModel)]="end" /><br />
+Interval of Incrementation: <input type="number" name="interval" [(ngModel)]="interval" /><br />
+<button (click)="initXCoords(start, end, interval)">Save Cycle Settings</button>
+<br />
+<h3>Set Timing Settings</h3>
+Number of Runs to Average: <input type="number" name="runs" [(ngModel)]="runs" /><br />
+Random Number Range: <input type="number" name="range" [(ngModel)]="range" /><br />
+<button (click)="runTiming(runs, range)" [disabled]="!xCoordsDone">Record Timing</button>
+<br />
+<h3>Set Plot Settings</h3>
+Plot Type: <input [(ngModel)]="type" /><br />
+Plot Mode: <input [(ngModel)]="mode" /><br />
+<button (click)='plot(type, mode, "plotHolder")' [disabled]="!timingDone">Save Settings and Plot</button>
+
+<div id="plotHolder"><!-- Plot goes here. --></div>
