@@ -28,7 +28,6 @@ export class TimeGrapherComponent implements OnInit {
     @arg skip Type: number. The interval of spacing between each x coordinate.
   */
   public initXCoords(start:number, end:number, skip:number) {
-    console.log(typeof this.xCoords);
     for (var i = start; i <= end; i = i + skip) {
       this.xCoords.push(i);
     }
