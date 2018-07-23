@@ -27,13 +27,10 @@ export class TimingAveragerComponent implements OnInit {
   }
 
   public startTiming(numRuns:number, cyclesPerRun:number, range:number) {
-    var timer = window.performance;
     var totalTime:number = 0;
     for (var i = 0; i < numRuns; i++) {
-      var start = timer.now();
       this.timingComponent.startTiming(cyclesPerRun, range);
-      var end = timer.now()
-      totalTime += (end-start);
+      totalTime += this.timingComponent.timingResult;
     }
     this.averagedTime = (totalTime/numRuns);
   }

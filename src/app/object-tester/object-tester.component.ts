@@ -11,7 +11,7 @@ export class ObjectTesterComponent implements OnInit {
   public a: ImaginaryNum;
   public b: ImaginaryNum;
   private randomRange = 51; //Random number generation will return int between 0 and 50.
-  public timeResult = 0;
+  public timingResult = 0;
 
   constructor() { }
 
@@ -47,7 +47,7 @@ export class ObjectTesterComponent implements OnInit {
       this.multImagNums(this.a, this.b);
     }
     var end = processTimer.now();
-    this.timeResult = end - start; //Assigns result to variable which is then passed to client view.
+    this.timingResult = end - start; //Assigns result to variable which is then passed to client view.
   }
 
   ngOnInit() {
