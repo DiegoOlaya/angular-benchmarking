@@ -20,6 +20,15 @@ export class ArrayTesterComponent implements OnInit {
     return newNum;
   }
 
+  /**Generates a new complex number in an existing array data structure.
+    @arg num Type: number[]. The array data structure to update.
+    @arg range Type:number. The range of possible new values. (0 to range-1).
+  */
+  private updateNum(num:number[], range:number) {
+    num[0] = Math.random()*range;
+    num[1] = Math.random()*range;
+  }
+
   /**Multiplies two complex numbers and returns the result.
     @arg a Type: number[]. Complex number to multiply.
     @arg b Type: number[]. Complex number to multiply.
@@ -37,11 +46,13 @@ export class ArrayTesterComponent implements OnInit {
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
   */
   public startTiming(cycles:number, range:number) {
+    this.a = this.generateComplexNum(range);
+    this.b = this.generateComplexNum(range);
     var processTimer = window.performance;
     var start = processTimer.now();
     for (var i = 0; i < cycles; i++) {
-      this.a = this.generateComplexNum(range);
-      this.b = this.generateComplexNum(range);
+      this.updateNum(this.a, range);
+      this.updateNum(this.b, range);
       var c = this.multiplyImagNums(this.a, this.b);
     }
     var end = processTimer.now();

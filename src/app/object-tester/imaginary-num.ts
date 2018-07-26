@@ -13,4 +13,19 @@ export class ImaginaryNum {
       this.imaginary = i;
     }
   }
+
+  //Setter method for the real instance variable.
+  public setReal(newVal:number) {
+    this.real = newVal;
+  }
+
+  //Setter method for the imaginary instance variable.
+  public setImag(newVal:number) {
+    this.imaginary = newVal;
+  }
+
+  public setValues(newReal:number, newImag:number) {
+    this.real = newReal;
+    this.imaginary = newImag;
+  }
 }

@@ -13,8 +13,8 @@ import { PlotlyGrapher } from "./plotly-grapher";
 
 export class TimeGrapherComponent implements OnInit {
 
-  public xCoords = new Array(1); //Set when graphing command is issued.
-  private dataArray = new Array(); //Array holds the data for ea. implementation.
+  public xCoords; //Set when graphing command is issued.
+  private dataArray; //Array holds the data for ea. implementation.
 
   public xCoordsDone:boolean = false;
   public timingDone:boolean = false;
@@ -28,6 +28,7 @@ export class TimeGrapherComponent implements OnInit {
     @arg skip Type: number. The interval of spacing between each x coordinate.
   */
   public initXCoords(start:number, end:number, skip:number) {
+    this.xCoords = [];
     for (var i = start; i <= end; i = i + skip) {
       this.xCoords.push(i);
     }
@@ -40,6 +41,7 @@ export class TimeGrapherComponent implements OnInit {
   @arg range Type: number. The range for the random numbers that are generated.
   */
   public runTiming(runs:number, range:number) {
+    this.dataArray = [];
     var timerComponent = new TimingAveragerComponent();
     for (var i = 0; i < 3; i++) {
       timerComponent.setTimingComponent(i);

@@ -2,7 +2,7 @@ declare var Plotly: any; //Imports Plotly library for use.
 
 export class PlotlyGrapher {
 
-  private traceArray:Object[] = []; //Stores the plotly objects that are required for plotting data.
+  private traceArray:Object[]; //Stores the plotly objects that are required for plotting data.
 
   /**
     Class constructor. Initializes traceArray variable.
@@ -12,6 +12,7 @@ export class PlotlyGrapher {
     @arg usrType Type: string. The type of plot that is desired.
   */
   constructor(y_data:any[], xCoords:number[], usrMode:string, usrType:string) {
+    this.traceArray = [];
     for (let datum of y_data) {
       var obj = {
         x: xCoords,

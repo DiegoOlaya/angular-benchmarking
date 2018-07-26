@@ -30,12 +30,24 @@ export class NumberTesterComponent implements OnInit {
     @arg a_i Type: number. Represents imaginary part of first imaginary number.
     @arg b_r Type: number. Represents real part of second imaginary nunmber.
     @arg b_i Type: number. Represents imaginary part of second imaginary number.
-    @returns Array of two numbers representing real and imaginary parts of result.
+    @returns A number representing the real part of the result.
   */
-  private multiplyNums(a_r:number, a_i:number, b_r:number, b_i:number) {
+  private multiplyNums_real(a_r:number, a_i:number, b_r:number, b_i:number) {
     var c_r = (a_r * b_r) - (a_i * b_i);
+    return c_r;
+  }
+
+  /**
+    Multiplies two complex numbers together.
+    @arg a_r Type: number. Represents real part of first imaginary nunmber.
+    @arg a_i Type: number. Represents imaginary part of first imaginary number.
+    @arg b_r Type: number. Represents real part of second imaginary nunmber.
+    @arg b_i Type: number. Represents imaginary part of second imaginary number.
+    @returns A number representing the imaginary part of the result.
+  */
+  private multiplyNums_imag(a_r:number, a_i:number, b_r:number, b_i:number) {
     var c_i = (a_i * b_r) + (a_r * b_i);
-    return [c_r, c_i];
+    return c_i;
   }
 
   /**
@@ -47,8 +59,9 @@ export class NumberTesterComponent implements OnInit {
     var processTimer = window.performance;
     var start = performance.now();
     for (var i = 0; i < cycles; i++) {
-      this.generateNums(this.usrRange);
-      this.multiplyNums(this.a_r, this.a_i, this.b_r, this.b_i);
+      this.generateNums(range);
+      this.multiplyNums_real(this.a_r, this.a_i, this.b_r, this.b_i);
+      this.multiplyNums_imag(this.a_r, this.a_i, this.b_r, this.b_i);
     }
     var end = performance.now();
     this.timingResult = (end - start);
