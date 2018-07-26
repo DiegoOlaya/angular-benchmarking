@@ -1,0 +1,7 @@
+<h1>Random Number Timing</h1>
+<h3>Options</h3>
+Number of Cycles: <input type="number" [(ngModel)] = "cycles" name="cycles" /><br />
+Random Number Range: <input type="number" [(ngModel)] = "range" name="range" /><br />
+<button (click)="startTiming(cycles, range)">Start Timing</button>
+<br />
+<h4>Timing Result: {{timeResult}}</h4>

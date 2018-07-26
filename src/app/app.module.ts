@@ -8,6 +8,7 @@ import { ArrayTesterComponent } from './array-tester/array-tester.component';
 import { NumberTesterComponent } from './number-tester/number-tester.component';
 import { TimingAveragerComponent } from './timing-averager/timing-averager.component';
 import { TimeGrapherComponent } from './time-grapher/time-grapher.component';
+import { RandomNumTesterComponent } from './random-num-tester/random-num-tester.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TimeGrapherComponent } from './time-grapher/time-grapher.component';
     ArrayTesterComponent,
     NumberTesterComponent,
     TimingAveragerComponent,
-    TimeGrapherComponent
+    TimeGrapherComponent,
+    RandomNumTesterComponent
   ],
   imports: [
     BrowserModule,
