@@ -10,23 +10,42 @@ export class ArrayTesterComponent implements OnInit {
   //Variables storing the two complex numbers to be multiplied.
   private a:number[];
   private b:number[];
+
+  private randomNums:number[]; //Stores randomly generated numbers to use during multiplication.
+
   public timingResult:number;
 
   constructor() {}
 
-  //Randomly generates and returns a complex number represented by an array of two numbers.
-  private generateComplexNum(range:number) {
-    var newNum = [Math.random()*range, Math.random()*range];
+  /**
+    Generates a dummy array which will be given new values in this.startTiming().
+  */
+  private generateComplexNumPlaceholder() {
+    var newNum = [1, 1];
     return newNum;
+  }
+
+  /**
+    Generates and populates the randomNums array with random numbers needed for
+    multiplication timing.
+    @arg range Type: number. Specifies the range of possible values for generated random number.
+    @arg numberOfNums Type: number. The amount of complex numbers that need to be
+    generated.
+  */
+  private generateRandomNumbers(range:number, numberOfNums:number) {
+    this.randomNums = [];
+    for (var i = 0; i < (numberOfNums * 4); i++) {
+      this.randomNums.push(Math.random()*range);
+    }
   }
 
   /**Generates a new complex number in an existing array data structure.
     @arg num Type: number[]. The array data structure to update.
-    @arg range Type:number. The range of possible new values. (0 to range-1).
+    @arg index Type: number. The index at which to get new numbers from this.randomNums.
   */
-  private updateNum(num:number[], range:number) {
-    num[0] = Math.random()*range;
-    num[1] = Math.random()*range;
+  private updateNum(num:number[], index:number) {
+    num[0] = this.randomNums[index];
+    num[1] = this.randomNums[index + 1];
   }
 
   /**Multiplies two complex numbers and returns the result.
@@ -46,14 +65,18 @@ export class ArrayTesterComponent implements OnInit {
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
   */
   public startTiming(cycles:number, range:number) {
-    this.a = this.generateComplexNum(range);
-    this.b = this.generateComplexNum(range);
+    this.a = this.generateComplexNumPlaceholder();
+    this.b = this.generateComplexNumPlaceholder();
+    this.generateRandomNumbers(range, cycles);
+    var index = 0; //Used to access this.randomNums.
+
     var processTimer = window.performance;
     var start = processTimer.now();
     for (var i = 0; i < cycles; i++) {
-      this.updateNum(this.a, range);
-      this.updateNum(this.b, range);
+      this.updateNum(this.a, index);
+      this.updateNum(this.b, index+2);
       var c = this.multiplyImagNums(this.a, this.b);
+      index = index + 4; //Increments to avoid repeating numbers.
     }
     var end = processTimer.now();
     this.timingResult = (end-start); //Assigns result to state field that is then passed to client view.

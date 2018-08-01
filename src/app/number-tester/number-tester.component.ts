@@ -11,17 +11,34 @@ export class NumberTesterComponent implements OnInit {
   private a_i:number;
   private b_i:number;
   private b_r:number;
+  private randomNums:number[];
 
   public timingResult;
   public usrRange:number;
 
   constructor() { }
 
-  private generateNums(range:number) {
-    this.a_r = Math.random()*range;
-    this.a_i = Math.random()*range;
-    this.b_i = Math.random()*range;
-    this.b_r = Math.random()*range;
+  /**
+    Generates and populates the randomNums array with random numbers needed for
+    multiplication timing.
+    @arg range Type: number. Specifies the range of possible values for generated random number.
+    @arg numberOfNums Type: number. The amount of complex numbers that need to be
+    generated.
+  */
+  private generateRandomNumbers(range:number, numberOfNums:number) {
+    this.randomNums = [];
+    //Loop exit multiplied by 4 b/c multiplication requires to complex numbers, and
+    //each number has 2 values that must be generated.
+    for (var i = 0; i < (numberOfNums*4); i++) {
+      this.randomNums.push(Math.random()*range);
+    }
+  }
+
+  private generateNums(index:number) {
+    this.a_r = this.randomNums[index];
+    this.a_i = this.randomNums[index + 1];
+    this.b_i = this.randomNums[index + 2];
+    this.b_r = this.randomNums[index + 3];
   }
 
   /**
@@ -56,12 +73,15 @@ export class NumberTesterComponent implements OnInit {
     @arg range Type: number. The multipler that determines the possible range of random values when generating new numbers.
   */
   public startTiming(cycles:number, range:number) {
+    this.generateRandomNumbers(range, cycles);
+    var index = 0; //Used to access this.randomNums.
     var processTimer = window.performance;
     var start = performance.now();
     for (var i = 0; i < cycles; i++) {
-      this.generateNums(range);
+      this.generateNums(index);
       this.multiplyNums_real(this.a_r, this.a_i, this.b_r, this.b_i);
       this.multiplyNums_imag(this.a_r, this.a_i, this.b_r, this.b_i);
+      index = index + 4; //Increments to avoid repeating numbers.
     }
     var end = performance.now();
     this.timingResult = (end - start);
